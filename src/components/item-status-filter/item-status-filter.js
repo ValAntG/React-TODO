@@ -1,21 +1,54 @@
-import React from 'react';
+import React, { Component } from 'react';
 
 import './item-status-filter.css';
 
-const ItemStatusFilter = () => {
-  return (
-    <div className="btn-group">
-      <button type="button" className="btn btn-info">
-        All
-      </button>
-      <button type="button" className="btn btn-outline-secondary">
-        Active
-      </button>
-      <button type="button" className="btn btn-outline-secondary">
-        Passive
-      </button>
-    </div>
-  );
-};
+export default class ItemStatusFilter extends Component {
+  constructor() {
+    super();
 
-export default ItemStatusFilter;
+    this.state = {
+      button: 'All',
+    };
+
+    this.onLabelClick = (e) => {
+      this.setState({
+        button: e,
+      });
+    };
+  }
+
+  render() {
+    const { button } = this.state;
+    let classNames = 'btn btn-outline-secondary';
+
+    if (button) {
+      classNames += ' btn-info';
+    }
+
+    return (
+      <div className="btn-group">
+        <button
+          type="button"
+          className={classNames}
+          onClick={() => this.onLabelClick('All')}
+        >
+          All
+        </button>
+        <button
+          type="button"
+          className={classNames}
+          onClick={() => this.onLabelClick('Active')}
+        >
+          Active
+        </button>
+        <button
+          type="button"
+          className={classNames}
+          onClick={() => this.onLabelClick('Passive')}
+        >
+          Passive
+        </button>
+      </div>
+    );
+  }
+}
