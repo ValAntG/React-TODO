@@ -52,20 +52,22 @@ export default class App extends Component {
       });
     };
 
+    this.toggleProperty = (array, field, id) => {
+      const idx = array.findIndex((el) => el.id === id);
+      const oldItem = array[idx];
+      const newItem = { ...oldItem, [`${field}`]: !oldItem[field] };
+
+      return [
+        ...array.slice(0, idx),
+        newItem,
+        ...array.slice(idx + 1),
+      ];
+    }
+
     this.onToggleField = (id, field) => {
       this.setState(({ todoData }) => {
-        const idx = todoData.findIndex((el) => el.id === id);
-        const oldItem = todoData[idx];
-        const newItem = { ...oldItem, [`${field}`]: !oldItem[field] };
-
-        const newArray = [
-          ...todoData.slice(0, idx),
-          newItem,
-          ...todoData.slice(idx + 1),
-        ];
-
         return {
-          todoData: newArray,
+          todoData: this.toggleProperty(todoData, field, id),
         };
       });
     };
