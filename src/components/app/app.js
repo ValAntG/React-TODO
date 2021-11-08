@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
-import AppHeader from '../app-header';
-import SearchPanel from '../search-panel';
-import ItemStatusFilter from '../item-status-filter';
-import TodoList from '../todo-list';
-import AddItemForm from '../add-item-form';
+import React, { Component } from "react";
+import AppHeader from "../app-header";
+import SearchPanel from "../search-panel";
+import ItemStatusFilter from "../item-status-filter";
+import TodoList from "../todo-list";
+import AddItemForm from "../add-item-form";
 
-import './app.css';
+import "./app.css";
 
 export default class App extends Component {
   constructor() {
@@ -23,9 +23,9 @@ export default class App extends Component {
 
     this.state = {
       todoData: [
-        this.createItem('Drink Coffee'),
-        this.createItem('Make Awesome App'),
-        this.createItem('have a lunch'),
+        this.createItem("Drink Coffee"),
+        this.createItem("Make Awesome App"),
+        this.createItem("have a lunch"),
       ],
     };
 
@@ -57,12 +57,8 @@ export default class App extends Component {
       const oldItem = array[idx];
       const newItem = { ...oldItem, [`${field}`]: !oldItem[field] };
 
-      return [
-        ...array.slice(0, idx),
-        newItem,
-        ...array.slice(idx + 1),
-      ];
-    }
+      return [...array.slice(0, idx), newItem, ...array.slice(idx + 1)];
+    };
 
     this.onToggleField = (id, field) => {
       this.setState(({ todoData }) => {

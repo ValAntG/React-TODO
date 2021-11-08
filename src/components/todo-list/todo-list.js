@@ -1,7 +1,7 @@
-import React from 'react';
-import TodoListItem from '../todo-list-item';
+import React from "react";
+import TodoListItem from "../todo-list-item";
 
-import './todo-list.css';
+import "./todo-list.css";
 
 const TodoList = ({ todos, onDeleted, onToggleField }) => {
   const elements = todos.map((item) => {
@@ -12,8 +12,8 @@ const TodoList = ({ todos, onDeleted, onToggleField }) => {
         <TodoListItem
           {...itemProps}
           onDeleted={() => onDeleted(id)}
-          onToggleDone={() => onToggleField(id, 'done')}
-          onToggleImportant={() => onToggleField(id, 'important')}
+          onToggleDone={() => onToggleField(id, "done")}
+          onToggleImportant={() => onToggleField(id, "important")}
         />
       </li>
     );
