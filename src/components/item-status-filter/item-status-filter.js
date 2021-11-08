@@ -6,8 +6,7 @@ export default class ItemStatusFilter extends Component {
   constructor() {
     super();
 
-    this.state = {
-      button: 'All',
+    this.state = { button: 'All',
     };
 
     this.onLabelClick = (e) => {
