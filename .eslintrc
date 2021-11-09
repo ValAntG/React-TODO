@@ -22,6 +22,7 @@
   "rules": {
     "prettier/prettier": "error", // Обязательно!! Подсвечивает ошибки из Prettier.
     "react/jsx-uses-react": "error",
-    "react/jsx-uses-vars": "error"
+    "react/jsx-uses-vars": "error",
+    "no-debugger":"off"
   }
 }

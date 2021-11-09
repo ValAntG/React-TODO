@@ -27,6 +27,8 @@ export default class App extends Component {
         this.createItem("Make Awesome App"),
         this.createItem("have a lunch"),
       ],
+      searchValue: "",
+      searchType: "All",
     };
 
     this.deletedItem = (id) => {
@@ -67,6 +69,18 @@ export default class App extends Component {
         };
       });
     };
+
+    this.onSearch = (e) => {
+      this.setState({
+        searchValue: e.target.value,
+      });
+    };
+
+    this.changeTypeSearch = (type) => {
+      this.setState({
+        searchType: type,
+      });
+    };
   }
 
   render() {
@@ -77,11 +91,16 @@ export default class App extends Component {
       <div className="todo-app">
         <AppHeader toDo={toDoCount} done={doneCount} />
         <div className="top-panel d-flex">
-          <SearchPanel />
-          <ItemStatusFilter />
+          <SearchPanel onSearch={this.onSearch} />
+          <ItemStatusFilter
+            changeTypeSearch={(type) => this.changeTypeSearch(type)}
+            typeSearch={this.state.searchType}
+          />
         </div>
         <TodoList
           todos={this.state.todoData}
+          searchValue={this.state.searchValue}
+          searchType={this.state.searchType}
           onDeleted={this.deletedItem}
           onToggleField={(id, field) => this.onToggleField(id, field)}
         />
